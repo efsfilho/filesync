@@ -1,4 +1,3 @@
-const net = require('net');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
@@ -23,16 +22,16 @@ class FileHandler {
   }
 
   // Retorn o hash de um arquivo
-  static criaHash(filePath) {
-    return new Promise((resolve, reject) => {
-      let hash = crypto.createHash('sha1');
-      let stream = fs.createReadStream(filePath);
+  // static criaHash(filePath) {
+  //   return new Promise((resolve, reject) => {
+  //     let hash = crypto.createHash('sha1');
+  //     let stream = fs.createReadStream(filePath);
 
-      stream.on('data', chunk => hash.update(chunk));
-      stream.on('end', () => resolve(hash.digest('hex')));
-      stream.on('error', err => reject(err));
-    });
-  }
+  //     stream.on('data', chunk => hash.update(chunk));
+  //     stream.on('end', () => resolve(hash.digest('hex')));
+  //     stream.on('error', err => reject(err));
+  //   });
+  // }
 
   // Retorna array com nomes e hash de cada arquivo
   static async montaInfo(files) {
